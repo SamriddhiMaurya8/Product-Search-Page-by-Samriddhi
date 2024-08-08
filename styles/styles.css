@@ -88,7 +88,7 @@ body {
   margin: 0;
 }
 .gallery__container #product-content #product-container .single-item .title-wrap .product-price {
-  color: red;
+  color: color2;
   font-weight: 600;
   font-size: 16px;
   margin: 14px 0;
@@ -111,6 +111,11 @@ body {
 @media screen and (max-width: 469px) {
   .gallery__container #product-content #product-container .single-item .product-rating .category {
     width: 54%;
+  }
+}
+@media screen and (max-width: 991px) {
+  .gallery__container #product-content #product-container .single-item .product-rating .category {
+    width: 60%;
   }
 }
 @media screen and (max-width: 700px) {

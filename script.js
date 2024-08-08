@@ -13,8 +13,12 @@ const productContent = document.getElementById('product-content');
 const productContainer = document.getElementById('product-container');
 const productButtons = document.querySelector('.menu');
 
+
+
+
 function FetchProducts(displayProduct) {
   productContainer.innerHTML = '';
+
 
   for (let i = 0; i < displayProduct.length; i++) {
     const product = displayProduct[i];
