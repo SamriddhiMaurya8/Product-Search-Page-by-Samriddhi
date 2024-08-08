@@ -70,7 +70,7 @@ body {
 }
 .gallery__container #product-content #product-container .single-item:hover {
   transform: scale(1.1);
-  transition: transform 0.5s;
+  transition: transform 0.7s;
 }
 .gallery__container #product-content #product-container .single-item .product-img {
   width: 100%;

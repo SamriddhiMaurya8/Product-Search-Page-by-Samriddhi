@@ -38,7 +38,7 @@ function FetchProducts(displayProduct) {
 
     const productPrice = document.createElement('div');
     productPrice.classList.add('product-price');
-    productPrice.textContent = product.price;
+    productPrice.textContent = `$${product.price}`;
 
     titleWrap.appendChild(title);
     titleWrap.appendChild(productPrice);
@@ -55,7 +55,6 @@ function FetchProducts(displayProduct) {
     productItem.appendChild(productImg);
     productItem.appendChild(titleWrap);
     productItem.appendChild(typess);
-
     productContainer.appendChild(productItem);
   }
 }
