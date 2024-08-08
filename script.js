@@ -9,14 +9,16 @@ const products = [
   { id: 8, name: "Novel", price: 14.99, category: "Books", image: "https://via.placeholder.com/250x200?text=Novel" },
 ];
 
-
-
+const productContent = document.getElementById('product-content'); 
 const productContainer = document.getElementById('product-container');
+const productButtons = document.querySelector('.menu');
 
-function FetchProducts(productsToDisplay) {
+function FetchProducts(displayProduct) {
   productContainer.innerHTML = '';
 
-  productsToDisplay.forEach(product => {
+  for (let i = 0; i < displayProduct.length; i++) {
+    const product = displayProduct[i];
+
     const productItem = document.createElement('div');
     productItem.classList.add('single-item');
 
@@ -36,42 +38,31 @@ function FetchProducts(productsToDisplay) {
 
     const productPrice = document.createElement('div');
     productPrice.classList.add('product-price');
-    productPrice.textContent = `$${product.price.toFixed(2)}`;
+    productPrice.textContent = product.price;
 
     titleWrap.appendChild(title);
     titleWrap.appendChild(productPrice);
 
-    const productRating = document.createElement('div');
-    productRating.classList.add('product-rating');
+    const typess = document.createElement('div');
+    typess.classList.add('product-rating');
 
     const category = document.createElement('div');
     category.classList.add('category');
     category.textContent = product.category;
 
-    productRating.appendChild(category);
+    typess.appendChild(category);
 
     productItem.appendChild(productImg);
     productItem.appendChild(titleWrap);
-    productItem.appendChild(productRating);
+    productItem.appendChild(typess);
 
     productContainer.appendChild(productItem);
-  });
+  }
 }
 
-FetchProducts(products);
+productContent.appendChild(productContainer);
 
-document.querySelectorAll('.product-links').forEach(button => {
-  button.addEventListener('click', () => {
-    const category = button.textContent.trim();
-    FetchProducts(category === 'All' ? products : products.filter(product => product.category === category));
-  });
-});
-
-
-
-
-
-function createCategoryButton(category, onClick) {
+function categoryButton(category, onClick) {
   const button = document.createElement('button');
   button.classList.add('product-links');
   button.textContent = category;
@@ -79,25 +70,21 @@ function createCategoryButton(category, onClick) {
   return button;
 }
 
-
 function addCategoryButtons() {
   const categories = ['All', 'Electronics', 'Sports', 'Home', 'Books'];
-  categories.forEach(category => {
-    const button = createCategoryButton(category, () => {
+  for (let i = 0; i < categories.length; i++) {
+    const category = categories[i];
+    const button = categoryButton(category, () => {
       FetchProducts(category === 'All' ? products : products.filter(product => product.category === category));
     });
-    productTabsContainer.appendChild(button);
-  });
+    productButtons.appendChild(button);
+  }
 }
-
-FetchProducts(products);
-addCategoryButtons();
-
-
-
-
 
 document.getElementById('filter').addEventListener('keyup', (e) => {
   const text = e.target.value.toLowerCase();
   FetchProducts(products.filter(product => product.category.toLowerCase().includes(text)));
 });
+
+addCategoryButtons();
+FetchProducts(products);
